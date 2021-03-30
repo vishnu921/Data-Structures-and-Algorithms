@@ -9,7 +9,7 @@ bool CanRepresentBST(int pre[], int n){
 	for(int i = 0; i < n; i++){
 		if(pre[i] < root) return false;
 
-		//
+		
 		while(!s.empty() && s.top() < pre[i]){
 			root = s.top();
 			s.pop();
