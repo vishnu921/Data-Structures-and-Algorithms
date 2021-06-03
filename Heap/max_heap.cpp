@@ -107,8 +107,8 @@ public:
 
 		heap_size = n;
 
-		//(n-1)/2 is the first non-leaf node from bottom
-		for(int i = (n-1)/2; i >= 0; i--){
+		//(n/2-1) is the first non-leaf node from bottom
+		for(int i = (n/2-1); i >= 0; i--){
 			heapify(i);
 		}
 	}
