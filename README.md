@@ -16,8 +16,8 @@ Hi 👋 this repository contains DSA problems solved by me in C++ programming la
 ## [Stack and Queue](stacks&#32;and&#32;queues)
 
 ## [Tree](Trees)
-   ### [Binary Tree](Trees/Binary&#32;Tree)
-   ### [Binary Search Tree](Trees/Binary&#32;search&#32;tree)
+### &#32;&#32;&#32;[Binary Tree](Trees/Binary&#32;Tree)
+### &#32;&#32;&#32;[Binary Search Tree](Trees/Binary&#32;search&#32;tree)
 
 
 ## [Heap](Heap)
