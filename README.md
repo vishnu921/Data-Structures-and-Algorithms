@@ -1,4 +1,4 @@
-# Data Structures and Algorithm
+# Data Structures and Algorithms
 
 Hi 👋 this repository contains DSA problems solved by me in C++ programming language.
 
