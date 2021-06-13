@@ -43,7 +43,7 @@ node *buildTree(string s){
 
 		if(currval != "N"){
 			cur->right = new node(stoi(currval));
-			queue.push(cur->left);
+			queue.push(cur->right);
 		}
 		i++;
 	}
