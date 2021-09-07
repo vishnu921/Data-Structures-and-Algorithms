@@ -6,23 +6,18 @@ of elements in the array whose sum is equal to k
 using namespace std;
 
 //we use unordered map to hash each element of array
-int CountPairsWithSum(int a[], int n, int k)
+int CountPairsWithSum(int arr[], int n, int k)
 {
-	unordered_map <int, int> m;
-	int c = 0;
+	unordered_map <int, int> mp;
+	int count = 0;
 	for(int i = 0; i < n; i++){
-		int x = k - a[i];
-		if(m[x == 0])
-		{
-			m[a[i]]++;
+		if(mp.find(k-arr[i]) != mp.end()){
+			count += mp[k-arr[i]];
 		}
-		else
-		{
-			c+= m[x];
-			m[a[i]]++;
-		}
+		mp[arr[i]]++;
 	}
-	return c;
+
+	return count;
 }
 
 int main()
