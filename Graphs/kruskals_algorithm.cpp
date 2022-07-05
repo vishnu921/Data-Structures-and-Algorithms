@@ -75,10 +75,12 @@ int KruskalAlgorithm(int n, int m, vector<Edge> &edges){
 		//if the nodes at the end of this edge 'e' are already in 
 		//same set then do not
 		//else add this edge to mst
-		if(find(e.u, parent) != find(e.v, parent)){
+		int a = find(e.u, parent);
+		int b = find(e.v, parent);
+		if(a != b){
 			mstCost += e.weight;
 			mst.push_back(e);
-			makeUnion(e.u, e.v, parent, rank);
+			makeUnion(a, b, parent, rank);
 		}
 	}
 
