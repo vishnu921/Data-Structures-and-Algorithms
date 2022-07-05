@@ -16,32 +16,31 @@ void display(queue<int> q){
 
 void interleaveQueue(queue<int> &q){
 	if(q.size()%2 != 0) return;
-	stack<int> s;
-	int n = q.size();
 
-	for(int i = 0; i < n/2; i++)
-	{
+	stack<int> s;
+	int n=q.size();
+
+	for(int i = 0; i < n/2; i++) {
 		s.push(q.front());
 		q.pop();
 	}
-	
-	while(!s.empty()){
+
+	while(!s.empty()) {
 		q.push(s.top());
 		s.pop();
 	}
-	
-	for(int i = 0; i < n/2; i++)
-	{
+
+	for(int i = 0; i < n/2; i++) {
 		q.push(q.front());
 		q.pop();
 	}
-	
-	for(int i = 0; i < n/2; i++){
+
+	for(int i = 0; i < n/2; i++) {
 		s.push(q.front());
 		q.pop();
 	}
-	
-	while(!s.empty()){
+
+	while(!s.empty()) {
 		q.push(s.top());
 		s.pop();
 		q.push(q.front());
