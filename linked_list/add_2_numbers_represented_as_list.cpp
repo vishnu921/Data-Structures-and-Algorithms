@@ -58,48 +58,44 @@ void display(node *p)
 	cout << "\n";
 }
 
-node *addTwoNumber(node *first, node *second)
+void insert(int x, node *&head, node *&tail){
+    node *temp = new node(x);
+    if(head == NULL){
+        head = temp;
+        tail = temp;
+        return;
+    }
+    tail->next = temp;
+    tail = temp;
+}
+
+node* addTwoLists(node* first, node* second)
 {
-	first = reverse(first);
-	second = reverse(second);
-
-	node *res = NULL;
-	node *prev = NULL;
-	node *temp = NULL;
-
-	int sum = 0, carry = 0;
-	while(first != NULL || second != NULL)
-	{
-		sum = carry + (first ? first->data : 0) + (second ? second->data : 0);
-
-		carry = ((sum >= 10) ? 1 : 0);
-
-		sum = sum%10;
-
-		temp = new node(sum);
-
-		if(res == NULL)
-		{
-			res = temp;
-		}
-		else 
-		{
-			prev->next = temp;
-		}
-
-		prev = temp;
-		if(first) first = first->next;
-		if(second) second = second->next;
-	}
-
-	if(carry)
-	{
-		temp->next = new node(carry);
-	}
-
-	res = reverse(res);
-
-	return res;
+    first = reverse(first);
+    second = reverse(second);
+    
+    node *head = NULL, *tail = NULL;
+    int carry = 0;
+    
+    while(first != NULL || second != NULL){
+        int f = (first==NULL) ? 0:first->data;
+        int s = (second==NULL) ? 0:second->data;
+        
+        int sum = f + s + carry;
+        
+        carry = (sum>=10) ? 1:0;
+        sum = sum%10;
+        
+        insert(sum, head, tail);
+        if(first) first = first->next;
+        if(second) second = second->next;
+    }
+    
+    if(carry){
+        insert(carry, head, tail);
+    }
+    
+    return reverse(head);
 }
 
 int main()
@@ -116,7 +112,7 @@ int main()
 	cout << "second number: ";
 	display(second);
 
-	node *ans = addTwoNumber(first, second);
+	node *ans = addTwoLists(first, second);
 
 	cout << "sum :";
 	display(ans);

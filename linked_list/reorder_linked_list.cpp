@@ -26,6 +26,7 @@ void insert(int x, node* &head, node* &tail){
 	{
 		head = temp;
 		tail = temp;
+		return;
 	}
 
 	tail->next = temp;

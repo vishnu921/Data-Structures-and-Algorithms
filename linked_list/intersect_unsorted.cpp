@@ -45,26 +45,21 @@ int Get_length(node *head)
 }
 
 
-int findintersection(node *first, node *second, int n, int m)
-{
+int findintersection(node *head1, node *head2, int n, int m) {
+	
 	int d = n-m;
 
-	node *p1 = first;
+	node *p1 = head1, *p2 = head2;
 	//Now we traverse d times in the longer linked list
 	// to reach the particular node of longer linked list from where 
 	//the distance to common node is equal to the distance 
 	//between first node of shorted list and the common node
-	while(p1 != NULL && d > 0)
-	{
+	while(d > 0){
 		p1 = p1->next;
 		d--;
 	}
 
-	if(p1 == NULL) return -1;
-
-	node *p2 = second;
-	while(p1 != NULL && p2 != NULL)
-	{
+	while(p1 != NULL && p2 != NULL) {
 		if(p1 == p2) return p1->data;
 
 		p1 = p1->next;

@@ -57,41 +57,29 @@ node *reverse(node *head)
 }
 bool ispalindrome(node *head)
 {
-	if(head == NULL || head->next == NULL) return true;
-
-	node *slow = head;
-	node *fast = head;
-	node *prev = NULL, *second = NULL, *first = NULL;
-
-	while(fast != NULL && fast->next != NULL)
-	{
-		fast = fast->next->next;
-		prev = slow;
-		slow = slow->next;
-	}
-
-	if(fast != NULL)
-	{
-		slow = slow->next;
-	}
-
-	first = head;
-	second = slow;
-	prev->next = NULL;
-	second = reverse(second);
-
-	while(first != NULL && second != NULL)
-	{
-		if(first->data != second->data) 
-			{
-				return false;
-			}
-		first = first->next;
-		second = second->next;
-	}
-
-	if(first == NULL && second == NULL) return true;
-	return false;
+	if(!head) return true;
+        
+    node *slow = head, *fast = head->next;
+    while(fast!=NULL && fast->next!=NULL){
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    
+    slow->next = reverse(slow->next);
+    
+    node *p1 = head,*p2 = slow->next;
+    
+    while(p1 && p2){
+        if(p1->data != p2->data){
+            slow->next = reverse(slow->next);
+            return false;
+        }
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    
+    slow->next = reverse(slow->next);
+    return true;
 }
 
 

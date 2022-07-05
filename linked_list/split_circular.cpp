@@ -44,36 +44,24 @@ void display(node *head)
 	cout << "\n";
 }
 
-void splithalves(node **head1_ref, node **head2_ref)
-{
+void splithalves(node **head1_ref, node **head2_ref) {
 	if(head == NULL) return;
-	if(head->next == head)
-	{
-		*head1_ref = head;
-		return;
-	}
-
-	node *fast = head;
-	node *slow = head;
-
-
-	//after while loop if list has odd number of nodes fast->next == head;
-	//and for even nodes fast->next->next == head;
-	while(fast->next != head && fast->next->next != head)
-	{
-		fast = fast->next->next;
-		slow = slow->next;
-	}
-
-	if(fast->next->next == head)
-	{
-		fast = fast->next;
-	}
-
-	*head1_ref = head;
-	*head2_ref = slow->next;
-	fast->next = slow->next;
-	slow->next = head;
+	
+	node *slow = head, *fast = head;
+    
+    while(fast->next!=head && fast->next->next!=head){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    
+    if(fast->next->next == head){
+        fast = fast->next;
+    }
+    
+    *head1_ref = head;
+    *head2_ref = slow->next;
+    slow->next = head;
+    fast->next = *head2_ref;
 }
 
 int main()
