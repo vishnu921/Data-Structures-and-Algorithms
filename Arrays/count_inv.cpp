@@ -66,6 +66,5 @@ int main()
 		cin >> a[i];
 	}
 	cout << "count inversion: " << count_inv(a,n) << endl;
-	/* code */
 	return 0;
 }
